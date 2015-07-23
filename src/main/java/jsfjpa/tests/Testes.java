@@ -17,7 +17,7 @@ public class Testes {
 		
 		Automovel auto = new Automovel();
 		auto.setAnoFabricacao(2010);
-		auto.setModelo("Ferrari");
+		auto.setModelo("m41");
 		auto.setObservacoes("Nunca foi batido");
 		
 		EntityTransaction tx = em.getTransaction();

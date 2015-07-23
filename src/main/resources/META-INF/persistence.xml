@@ -8,7 +8,7 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<properties>
 		
-			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+			
 			
 		
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/automoveis" />
@@ -16,6 +16,7 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 			<property name="javax.persistence.jdbc.password" value="marcos" />
 			
 			<property name="hibernate.dialect" value="org.hibernate.dialect.ProgressDialect" />
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
