@@ -1,5 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:h="http://java.sun.com/jsf/html">
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
 	<title> Teste </title>
@@ -7,14 +8,35 @@ xmlns:h="http://java.sun.com/jsf/html">
 
 <h:body>
 	<h:form>
+		<h:messages />
 		<h:panelGrid columns="2">
-			Marcar : <h:inputText value="#{automovelBean.automovel.marca}" />
-			Modelo : <h:inputText value="#{automovelBean.automovel.modelo}"/>
+			
+			Marcar : 
+			
+			<h:selectOneMenu value="#{automovelBean.marca}" required="true" converter="entityConverter">
+				<f:selectItem itemLabel="--Selecione--" noSelectionOption="true"/>
+				<f:selectItems value="#{marcaBean.marcas}" var="marca" itemValue="#{marca}" itemLabel="#{marca.nome}"/>
+				<f:ajax render="selectModelo" />
+			</h:selectOneMenu>
+			
+			Modelo : 
+			
+			<h:selectOneMenu id="selectModelo" label="modelo" value="#{automovelBean.automovel.modelo}" required="true"	converter="entityConverter">
+				<f:selectItem itemLabel="-- Selecione --" noSelectionOption="true" />
+				<f:selectItems value="#{automovelBean.marca.modelos}" var="modelo" itemValue="#{modelo}" itemLabel="#{modelo.descricao}" />
+			</h:selectOneMenu>
+			
 			Ano de Fabricação: <h:inputText value="#{automovelBean.automovel.anoFabricacao}" />
+			
 			Ano do Modelo: <h:inputText value="#{automovelBean.automovel.anoModelo}"/>
+			
+			Preço: <h:inputText value="#{automovelBean.automovel.preco}" />
+			
+			Kilometragem: <h:inputText value="#{automovelBean.automovel.kilometragem}" />
+			
 			Observações: <h:inputTextarea value="#{automovelBean.automovel.observacoes}"/>
 			
-			<h:commandButton value="Salvar" action="#{automovelBean.salvar(automovelBean.automovel)}" />
+			<h:commandButton value="Salvar" action="#{automovelBean.salvar(auto)}" />
 			
 		</h:panelGrid>
 		

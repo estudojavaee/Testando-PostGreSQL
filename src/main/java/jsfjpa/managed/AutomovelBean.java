@@ -14,8 +14,8 @@ import jsfjpa.utils.JPAUtil;
 public class AutomovelBean {
 	
 	private Automovel automovel = new Automovel();
-	
 	private List<Automovel> automoveis;
+	private Marca marca;
 	
 	public void salvar(Automovel automovel){
 		
