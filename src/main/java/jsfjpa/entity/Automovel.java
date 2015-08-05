@@ -1,5 +1,6 @@
 package jsfjpa.entity;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,6 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
+@Cacheable
 @Table(name="Automovel", schema="public")
 public class Automovel {
 	
@@ -80,13 +82,12 @@ public class Automovel {
 		this.marca = marca;
 	}
 
-	public String getModelo() {
+	
+	public Modelo getModelo() {
 		return modelo;
 	}
 
-	public void setModelo(String modelo) {
-		this.modelo = modelo;
-	}
+
 
 	public Integer getAnoFabricacao() {
 		return anoFabricacao;

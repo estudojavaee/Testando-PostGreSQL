@@ -4,16 +4,19 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
 http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 
-	<persistence-unit name="default">  
+	<persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
 		<properties>
-		
-			
-			
-		
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/automoveis" />
 			<property name="javax.persistence.jdbc.user" value="postgres" />
 			<property name="javax.persistence.jdbc.password" value="marcos" />
+			
+			<!-- Pool de conexões -->
+			<property name="hibernate.c3p0.min_size" value="5" /> <!-- deixa 5 conexões pronta para o uso -->
+			<property name="hibernate.c3p0.max_size" value="20" /> <!-- deixa fazer no maximo 20 conexões -->
+			<property name="hibernate.c3p0.timeout" value="300" /> <!-- fecha uma conexao com tempo de 300 segundos -->
+			<property name="hibernate.c3p0.max_statements" value="50" />
 			
 			<property name="hibernate.dialect" value="org.hibernate.dialect.ProgressDialect" />
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
@@ -21,6 +24,14 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			
+			<!-- Cache de 2 nivel para Id's -->
+			<property name="hibernate.cache.region.factory_class" value="org.hibernate.cache.ehcache.EhCacheRegionFactory"/>
+			
+			<!-- Cache de 2 nivel para consultas -->
+			<property name="hibernate.cache.use_query_cache" value="true" />
+			
+			<!-- Dados e Estatisticas de quantos inserts, updates, deletes e consultas foram feitas e seus tempos -->
+			<property name="hibernate.generate_statistics" value="true"/>
 			
 		</properties>
 	</persistence-unit>

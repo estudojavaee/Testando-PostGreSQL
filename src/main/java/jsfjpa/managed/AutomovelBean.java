@@ -1,5 +1,6 @@
 package jsfjpa.managed;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -15,7 +16,7 @@ public class AutomovelBean {
 	
 	private Automovel automovel = new Automovel();
 	private List<Automovel> automoveis;
-	private Marca marca;
+	//private Marca marca;
 	
 	public void salvar(Automovel automovel){
 		
